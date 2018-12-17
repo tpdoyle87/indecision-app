@@ -6,7 +6,7 @@ class Option extends Component {
   render() {
     return(
 
-        <li>{this.props.option}<button>Remove</button></li>
+        <li>{this.props.option}</li>
 
     );
   }
