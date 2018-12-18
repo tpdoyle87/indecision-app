@@ -12,22 +12,27 @@ class Counter extends Component {
   }
 
   addOne = () => {
-    let increase = this.state.count;
-    this.setState({
-      count: increase += 1
+    // let increase = this.state.count;
+    this.setState((prevState) => {
+      return {
+        count: prevState.count + 1
+      }
     })
   }
 
   minusOne = () => {
-    let decrease = this.state.count;
-    this.setState({
-      count: decrease -= 1
+    this.setState((prevState) => {
+      return {
+        count: prevState.count - 1
+      }
     })
   }
 
   reset = () => {
-    this.setState({
-      count: 0
+    this.setState(() => {
+      return {
+        count: 0
+      }
     })
   }
   render() {

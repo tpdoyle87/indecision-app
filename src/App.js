@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       title: "Indecision App",
       subtitle: "Put your life into the hands of a computer!",
-      options: []
+      options: [],
+      disable: true
     }
   }
   onMakeDecision = () => {
@@ -23,9 +24,16 @@ class App extends Component {
   }
 
   onFormSubmit = (option) => {
-    const adjusted = this.state.options.concat(option)
-    this.setState({
-      options: adjusted
+    if (!option) {
+      return "This is not a valid option"
+    } else if (this.state.options.indexOf(option) > -1) {
+      return `${option} already exists and cant be added again`
+    }
+
+    this.setState((prevState) => {
+      return {
+        options: prevState.options.concat(option)
+      }
     })
   }
 
@@ -42,15 +50,35 @@ class App extends Component {
     })
   }
 
+  hasOptions = () => {
+    this.setState((prevState) => {
+      if (prevState.options.length !== 0) {
+        return {
+          disable: false
+        }
+      }
+      return {
+        disable: true
+      }
+    })
+  }
+
   render() {
 
 
     return (
       <div className="App-header">
-        <Header title={this.state.title} subtitle={this.state.subtitle}/>
-        <Action onMakeDecision={this.onMakeDecision}/>
+        <Header
+          title={this.state.title}
+          subtitle={this.state.subtitle}
+        />
+        <Action disable={this.state.disable} hasOptions={this.hasOptions} onMakeDecision={this.onMakeDecision}/>
         <Options options={this.state.options}/>
-        <AddOptions onFormSubmit={this.onFormSubmit} removeAll={this.removeAll}/>
+        <AddOptions
+          onFormSubmit={this.onFormSubmit}
+          removeAll={this.removeAll}
+          hasOptions={this.hasOptions}
+        />
       </div>
     );
   }

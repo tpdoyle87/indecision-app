@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import Counter from './App2';
+import App from './App';
 
 
 // const app = {
@@ -55,6 +55,6 @@ import Counter from './App2';
 
 // renderIndecisionApp();
 
-ReactDOM.render(<Counter />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'))
 
 
