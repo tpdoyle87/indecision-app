@@ -1,17 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import './action.scss'
 
-class Action extends Component {
-  whatToDo = () => {
-    this.props.onMakeDecision();
-  }
+const Action = (props) => (
+      <button disabled={props.disable} className="launch-button" onClick={props.onMakeDecision}>What should I do?</button>
+    );
 
-  render() {
-    return (
-      <button disabled={this.props.disable} className="launch-button" onClick={this.whatToDo}>What should I do?</button>
-    )
-  }
-}
 
 export default Action;

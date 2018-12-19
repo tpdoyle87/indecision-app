@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-import './options.scss'
-
-class Option extends Component {
-  render() {
-    return(
-
-        <li>{this.props.option}</li>
-
+const Option = (props) => (
+        <div className="option">
+          <p className="option__text">{props.count}. {props.option}</p>
+          <button
+          className='button button--link'
+          onClick={(e) => {
+            props.removeChoice(props.option)
+          }}
+          >
+          remove
+          </button>
+        </div>
     );
-  }
-}
 
 export default Option

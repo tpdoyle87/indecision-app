@@ -4,10 +4,16 @@ import Header from './counter/header/header'
 import Buttons from './counter/buttons/buttons'
 import './App.css'
 class Counter extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      count: 0
+  state = { count: 0 };
+
+  componentWillMount(prevState) {
+    const storageCount = localStorage.getItem('count')
+    this.setState(() => ({count: JSON.parse(storageCount)}))
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      localStorage.setItem('count', this.state.count)
     }
   }
 

@@ -1,17 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 console.log('hello')
 
-class Header extends Component {
-
-  render() {
-    return(
-      <div>
-        <h1>Count: {this.props.count}</h1>
-      </div>
-    );
-  }
-
+const Header = (props) => {
+  return(
+    <div>
+      <h1>Count: {props.count}</h1>
+    </div>
+  );
 }
 
 export default Header
