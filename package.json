@@ -2,6 +2,7 @@
   "name": "indecision-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://aqueous-garden-74948.herokuapp.com/",
   "engines": {
     "npm": "6.1.0",
     "node": "10.4.1"
