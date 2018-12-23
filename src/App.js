@@ -14,7 +14,7 @@ class App extends Component {
   state = {
       title: "Indecision App",
       subtitle: "Put your life into the hands of a computer!",
-      options: ["React"],
+      options: [],
       disable: true,
       selectedOption: undefined
     }
@@ -23,7 +23,7 @@ class App extends Component {
     try {
     const data = localStorage.getItem("options")
       if (this.state.options) {
-        this.setState(() => ({options: JSON.parse(data) }))
+        this.setState(() => ({options: {JSON.parse(data) === null ? [] : JSON.parse(data) } }))
         this.hasOptions()
       }
     } catch {
