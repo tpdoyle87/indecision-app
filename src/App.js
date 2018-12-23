@@ -14,7 +14,7 @@ class App extends Component {
   state = {
       title: "Indecision App",
       subtitle: "Put your life into the hands of a computer!",
-      options: [],
+      options: ["React"],
       disable: true,
       selectedOption: undefined
     }
@@ -32,9 +32,13 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.options.length !== this.state.options.length) {
-      const json = JSON.stringify(this.state.options)
-      localStorage.setItem("options", json)
+    try {
+      if (prevState.options.length !== this.state.options.length) {
+        const json = JSON.stringify(this.state.options)
+        localStorage.setItem("options", json)
+      }
+    } catch (e) {
+
     }
   }
 
@@ -76,13 +80,17 @@ class App extends Component {
 
   hasOptions = () => {
     this.setState((prevState) => {
-      if (prevState.options.length !== 0) {
-        return {
-          disable: false
+      try {
+        if (prevState.options.length !== 0) {
+          return {
+            disable: false
+          }
         }
-      }
-      return {
-        disable: true
+        return {
+          disable: true
+        }
+      } catch (e) {
+
       }
     })
   }

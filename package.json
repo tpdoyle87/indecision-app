@@ -2,6 +2,10 @@
   "name": "indecision-app",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "6.1.0",
+    "node": "10.4.1"
+  },
   "dependencies": {
     "node-sass": "^4.11.0",
     "normalize.css": "^8.0.1",
@@ -24,5 +28,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gh-pages": "^2.0.1"
+  }
 }
